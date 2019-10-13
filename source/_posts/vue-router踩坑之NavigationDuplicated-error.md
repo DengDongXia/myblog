@@ -2,8 +2,8 @@
 title: vue-router踩坑之NavigationDuplicated error
 date: 2019-08-21 18:31:12
 categories: 
-- vue-touter
 - 开发遇到的问题
+- vue-touter
 tags:
 - vue-router
 - vue

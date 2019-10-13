@@ -1,11 +1,14 @@
 ---
 layout: post
 title: vue-cli 3学习之vue-cli-service插件开发（注册自定义命令）
+date: 2019-02-25 18:31:12
 tags:
 - vue-cli3
 - vue-cli-service
 - plugin
-categories: BuildTool
+categories: 
+- 构建
+- vue-cli3
 ---
 ## 前言
 
