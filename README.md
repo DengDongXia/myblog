@@ -11,6 +11,13 @@ hexo g
 hexo s
 ```
 
+### 构建与发布
+```
+hexo clean
+hexo g
+hexo d
+```
+
 # [DDong 的博客](https://dengdongxia.github.io/)
 
 ## 文章目录
