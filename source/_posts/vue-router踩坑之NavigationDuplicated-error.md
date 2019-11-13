@@ -12,7 +12,7 @@ tags:
 
 &emsp;&emsp;因业务需求重新开发了一个项目，但是在使用`vue-router`，偶然发现`vue-router`会报下面这个错误。
 
-![\[外链图片转存失败(img-MvBC79rI-1566403322600)(evernotecid://B04430E3-2296-4CE6-91FA-09EA592E652D/appyinxiangcom/12982926/ENResource/p2)\]](https://user-gold-cdn.xitu.io/2019/8/22/16cb4f296c3e2afb?w=836&h=85&f=png&s=27772)
+![](/images/2019-11-13-20-11-47.png)
 
 后来网上查询，给出了很多解决方案，很多都说直接删除node_modules，重新安装依赖就好。同时也有很多网友说这个方案无效。其实会出现这种错误的情况，是因为
 ```
@@ -37,4 +37,4 @@ npm i vue-router@3.0.6
 地址：[No stacktrace on NavigationDuplicated error #2881
 ](https://github.com/vuejs/vue-router/issues/2881)
 
-![\[外链图片转存失败(img-1bysQ27x-1566403322602)(evernotecid://B04430E3-2296-4CE6-91FA-09EA592E652D/appyinxiangcom/12982926/ENResource/p3)\]](https://user-gold-cdn.xitu.io/2019/8/22/16cb4f296c1f8f7a?w=765&h=890&f=png&s=294987)
+![](/images/2019-11-13-20-11-59.png)
