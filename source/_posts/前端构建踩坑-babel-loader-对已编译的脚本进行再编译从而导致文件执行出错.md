@@ -16,16 +16,14 @@ categories:
 
 &emsp;&emsp;因为打算开发一个小组件库，但是要对已经编译完成的组件库的脚本进行一遍完整的测试。所以，本人就很自然的启动一个项目，引入已经编译好的组件库脚本，想着大展伸手，结果。。。
 
-![](https://user-gold-cdn.xitu.io/2019/11/7/16e43654c6f2a722?w=225&h=225&f=png&s=58679)
+![](/images/2019-11-13-20-03-27.png)
 
 &emsp;&emsp;遇到了一大堆脑瓜子疼的警告`"export 'default' (imported as 'a') was not found in 'xxx' "`，或乱七八糟的报错...（捂脸哭.jpeg）。
 
 
-![](https://user-gold-cdn.xitu.io/2019/11/7/16e4365783b6604f?w=980&h=290&f=png&s=44875)
+![](/images/2019-11-13-20-04-01.png)
 
-
-![](https://user-gold-cdn.xitu.io/2019/11/7/16e4365a9f458984?w=1784&h=490&f=png&s=173638)
-
+![](/images/2019-11-13-20-04-12.png)
 
 - 原本我要引入的脚本`a.umd.js`是使用了ES6 模块的写法，将对应的模块export default 出来的。
 - 再将组件库发包到 npm上，并通过npm install 去将该组件库安装到node_modules对应的目录中。
@@ -45,28 +43,25 @@ categories:
 
 嗯，很顺利`npm i`完成，然鹅。
 
-
-![](https://user-gold-cdn.xitu.io/2019/11/7/16e436601a87080c?w=688&h=376&f=png&s=334847)
+![](/images/2019-11-13-20-04-25.png)
 
 直接通过本地依赖的方式依旧存在以上的问题。
 
 
 ### 那么为什么通过`npm i`发布到 npm 的脚本`a.umd.js`能在 node_modules 正常使用而通过本地依赖的方式安装 node_modules 以及直接引用却不行？
 
-![](https://user-gold-cdn.xitu.io/2019/11/7/16e43666f2eb7c00?w=272&h=185&f=png&s=21975)
+![](/images/2019-11-13-20-04-40.png)
 
 ## 后来
 
 经过网上查资料以及分析项目，终于发现了这么一个事情。。。
 
-
-![](https://user-gold-cdn.xitu.io/2019/11/7/16e4366b86403ca7?w=1892&h=300&f=png&s=49352)
-
+![](/images/2019-11-13-20-04-55.png)
 
 &emsp;&emsp;嗯，是的，babel-loader 对`a.umd.js`这个脚本，再次进行了编译。。。导致原本编译好的可以正常使用的脚本再次进一步被编译了，所以才会报错`"export 'default' (imported as 'a') was not found in 'xxx' "`。
 
+![](/images/2019-11-13-20-05-08.png)
 
-![](https://user-gold-cdn.xitu.io/2019/11/7/16e436712b008411?w=762&h=744&f=png&s=104510)
 ## 因此
 
 &emsp;&emsp;为了能顺利地在本地调试组件库的脚本a.umd.js，我只能选择在引入该脚本 a.umd.js调试的项目中进行 babel-loader 的配置，将 babel-loader 对 a.umd.js 的编译进行exclude。即babel-loader 不编译名字中包含`a.umd`字符的文件。
