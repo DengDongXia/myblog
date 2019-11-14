@@ -27,11 +27,11 @@ tags:
 position: sticky;
 top: 20px; //元素滚动到距离顶部为20px时，停止滚动（效果类似position: fixed; top: 20px;）
 
-![](https://note.youdao.com/yws/public/resource/92b73296f0f010ca95fb7a6ace1cff8c/xmlnote/6E7A14CB5FBF4EF6A8ECB7BB8D38AE81/6278)
+![](/images/2019-11-14-19-29-50.gif)
 
 兼容性：
 
-![](https://note.youdao.com/yws/public/resource/92b73296f0f010ca95fb7a6ace1cff8c/xmlnote/E6DD4D71D4EB4CD0B8EAE5E1E40AB042/6251)
+![](/images/2019-11-14-19-29-03.png)
 
 ### 生效规则：
 
