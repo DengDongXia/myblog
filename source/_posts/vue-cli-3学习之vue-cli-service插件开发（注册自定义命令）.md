@@ -34,7 +34,7 @@ categories:
 - vue serve：为某个原型（如：单独一个`vue`文件）快速启动一个服务（要求全局安装`@vue/cli-service-global`）
 - vue ui: 通过图形化界面创建或管理界面
 
-![](https://user-gold-cdn.xitu.io/2019/2/25/169248590b2fbadc?w=1255&h=585&f=png&s=181919)
+![](/images/2019-11-14-19-19-20.png)
 
 ## 接下来谈一谈 `Vue.config.js`
 
@@ -45,7 +45,8 @@ categories:
 我对这两个字段的理解是
 - configureWebpack 是让用户字段写一个配置对象，其内部再通过[`webpack-merge`](https://github.com/survivejs/webpack-merge)将原有对象和用户配置的对象进行合并
 - chainWebpack 是通过利用[`webpack-chain`](https://github.com/neutrinojs/webpack-chain)提供的链式调用方法去直接修改原有的配置对象
-![在这里插入图片描述](https://user-gold-cdn.xitu.io/2019/2/25/16924858feec03b6?w=631&h=595&f=png&s=64132)
+
+![](/images/2019-11-14-19-19-42.png)
 
 > 对于 `vue-cli 3`来说，它还存在一个比较特别的模块，就是它提供了自定义插件的功能
 
@@ -72,7 +73,7 @@ categories:
 // 可以通过下面这个命令查看所有命令，从而确认自定义的命令是否创建成功
 npx vue-cli-service help
 ```
-![在这里插入图片描述](https://user-gold-cdn.xitu.io/2019/2/25/16924858fd37c5ee?w=528&h=334&f=png&s=33989)
+![](/images/2019-11-14-19-20-19.png)
 
 > 然后接下来看一看具体实操例子
 
@@ -174,7 +175,8 @@ module.exports = (api, projectOptions) => {
 5. 在终端输入`npm run watch`，看到终端输出“`watch`命令注册成功”后，恭喜`watch`命令基本注册完成啦。
 
 可以通过运行`npx vue-cli-service help`查看vue-cli-service下面的所有命令，可以看到新增加了一个`watch`命令
-![在这里插入图片描述](https://user-gold-cdn.xitu.io/2019/2/25/16924858fd78e1ee?w=672&h=237&f=png&s=31921)
+
+![](/images/2019-11-14-19-20-41.png)
 
 6. 补充：另外，对于一个插件的使用，我们可以选择性的让用户进行一些设置；通过让用户在`vue.config.js`中的`pluginOptions`向插件进行传参数
 
@@ -216,7 +218,9 @@ module.exports = (api, projectOptions) => {
 其实再去看看`build`命令的实现源码，其实和上面watch的实现是差不多的
 
 Vue-cli-service build 命令源码
-![在这里插入图片描述](https://user-gold-cdn.xitu.io/2019/2/25/16924858fed428d6?w=836&h=383&f=png&s=79054)
+
+![](/images/2019-11-14-19-21-22.png)
+
 注册命令后，就可以通过调用 api.resolveWebpackConfig() 取回解析好的 webpack 配置。每次调用都会新生成一个 webpack 配置用来在需要时进一步修改。
 ```javascript
 module.exports = api => {
@@ -250,7 +254,9 @@ api.registerCommand('my-build', args => {
 > [`demo github`源码地址](https://github.com/DengDongXia/command-plugin-demo)
 
 主要实现代码如下：
-![在这里插入图片描述](https://user-gold-cdn.xitu.io/2019/2/25/16924858fee1255e?w=478&h=189&f=png&s=17798)
+
+![](/images/2019-11-14-19-21-40.png)
+
 `demo`具体步骤：
 1. 初始化一个项目
 2. 在根目录下创建一个`script`文件夹，在该文件夹目录下新建一个用于实现注册命令的js文件，我在这创建的文件名为`commandar-watch.js`
@@ -298,7 +304,10 @@ program.parse(process.argv)
 ## 再谈谈项目中 build 和 watch 的不同点
 其实这两个命令主要用到的配置还是Vue-cli 3提供的基本配置，在再次基础上针对不同页面特别设置一些配置，比如说针对某些页面需要进行css提取，还有不同页面设置不同的`entry`和`output`等等。而着这两个命令的主要区别就是Watch 字段、不同mode；对于是否压缩打包，我通过设置不同的环境模式从而设置文件是否需要打包（webpack 4提供了这个功能）；至于是否需要监听文件的改变功能的实现，我借鉴了`vue-cli-service build`命令的`--watch`实现方式。
 
-vue-cli-service build --watch ，核心代码 是获取webpack 配置，并将配置对象的watch字段的值设置为true。![在这里插入图片描述](https://user-gold-cdn.xitu.io/2019/2/25/1692485940a6432f?w=399&h=126&f=png&s=10045)
+vue-cli-service build --watch ，核心代码 是获取webpack 配置，并将配置对象的watch字段的值设置为true。
+
+![](/images/2019-11-14-19-22-22.png)
+
 > 注: `vue-cli-service`中的`build`命令`--watch`的实现[源码地址](https://github.com/vuejs/vue-cli/blob/dev/packages/%40vue/cli-service/lib/commands/build/index.js)
 
 
@@ -307,11 +316,14 @@ vue-cli-service build --watch ，核心代码 是获取webpack 配置，并将�
 关于存在原因：index.html模板，动态引入图片，引入不兼容模块
 
 > 实现源码
-![在这里插入图片描述](https://user-gold-cdn.xitu.io/2019/2/25/169248592af6f0b1?w=576&h=332&f=png&s=102642)
+
+![](/images/2019-11-14-19-22-49.png)
+
 ## 推荐使用 inspect
 
 审查 vue-cli 项目的 webpack 配置，可以很方便将查看使用 `vue-cli 3`配置后，其具体的 `webpack`配置
-![在这里插入图片描述](https://user-gold-cdn.xitu.io/2019/2/25/1692485929e1d5c1?w=323&h=366&f=png&s=96749)
+
+![](/images/2019-11-14-19-23-01.png)
 
 ## 结语
 针对这次分享的内容，虽然说我侧重分享了插件部分的内容，但是并不意味着`vue-cli 3` 内容只有这些，只是我这次开发中遇到比较多的模块就是`service`插件这一块，所以就特别提了一下，它还有其他的内容比如说ui那一块等等；
